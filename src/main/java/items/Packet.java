@@ -5,13 +5,10 @@ public class Packet {
     //  ATTRIBUT staic, car on possède qu'un seul packet par jeu
     public ArrayList <Carte> packetComplet;
     
-    //  private static enum Color {CARREAU, COEUR, PIQUE, TREFLE};
-    //  private static enum Value {AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI};
-
     /** Constructeur d'un packet de type ArrayList<Carte>
      * 
      */
-    public Packet() {packetComplet = new ArrayList<Carte>();}
+    public Packet() {this.packetComplet = new ArrayList<Carte>();}
 
     /** Méthode d'initialisation d'un packet complet de 52 cartes
      * 
@@ -26,7 +23,7 @@ public class Packet {
     /** Méthode contenu (sans argument) - Affiche toutes les cartes du packet
      * 
      */
-    public void contenu() {
+    public void getPacket() {
         System.out.println("Ce packet est composé de : \n");
         for (Carte c : this.packetComplet) {
             c.descr();
@@ -49,20 +46,15 @@ public class Packet {
     public Packet initDeckPlayer() {
         Packet deck = new Packet(); int f = 0;        
     
-        while (f < 8) { //  Boucle while pour pouvoir obtenir 8 cartes : Non mbre auto-definissable plus tard ??? Variable f pour la condition
-            int len = -1; //    variable pour la longuer de l'ArrayList
-       
-            for (Carte c : this.packetComplet) {c.nothing(); len++;} //  La Carte c parcours x elements de l'ArrayList, et à chaque point la variable len s'incrémente. Donc à la fin du parcours : len = x = longueur de packetComplet
-
-            int def = (int)(Math.random()*(len - f)); //    la variable définisseur de carte de manière aléatoire. Multiplication par len-f, car on ne veut pas ajoouter une carte outOfBounds (pas possible), donc il faut recuperer les cartes en fonction de la taille de packetComplet (qui varie constament). f nous indique en réalité combien de cartes ont été distribuée, donc ici jusqu'à 8 par appel de fonction
+        while (f < 8) { //  Boucle while pour pouvoir obtenir 8 cartes : Non mbre auto-definissable plus tard ??? Variable f pour la condition    
+            int def = (int)(Math.random()*(this.packetComplet.size() - 1 - f)); //  La variable définisseur de carte de manière aléatoire. Multiplication par le packetComplet.size()-1-f, car on ne veut pas ajoouter une carte IndexOutOfBounds (pas possible), donc il faut recuperer les cartes en fonction de la taille de packetComplet (qui varie constament). f nous indique en réalité combien de cartes ont été distribuée, donc ici jusqu'à 8 par appel de fonction
 
             if(this.packetComplet.contains(this.packetComplet.get(def))) { //   Vérification de la présence de la carte dans this.packetComplet
                 deck.packetComplet.add(this.packetComplet.get(def)); // Ajout de la carte au nouveau deck du joueur
                 this.packetComplet.remove(this.packetComplet.get(def)); f++; // On peut avoir 2 cartes identiques dans son deck, ce qui n'est pas souhaitable, donc on remove
             } else {} //    Si la carte n'est pas présente, on ne fait rien = on cherche une nouvele carte à ajouter = on refait les instructions de la condition car le compteur f ne s'incrémentera pas
-        } 
-        return deck;
+        } return deck;
     }
 
-        
+    
 }

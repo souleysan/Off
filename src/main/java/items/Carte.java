@@ -26,7 +26,7 @@ public class Carte {
 
     //  ENUMERATION APPARTENANT A LA CLASSE CARTE
     private static enum Value {AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI};
-        private static enum Color {CARREAU, COEUR, PIQUE, TREFLE};
+    private static enum Color {CARREAU, COEUR, PIQUE, TREFLE};
 
 
     //  ATTRIBUTS DE LA CLASSE
@@ -112,8 +112,4 @@ public class Carte {
         return false;
     }
 
-    /** Fonction nothing qui ne fais rien. Juste pour enlever la remarque de la classe Packet qui dit que je n'utilise même pas Carte c, compteur de la longueur de packetComplet avant le wile de initDeckPlayer
-     * 
-     */
-    public void nothing() {}
 }
