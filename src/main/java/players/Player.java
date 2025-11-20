@@ -59,5 +59,28 @@ public class Player {
         Player.pioche.packetComplet.remove((int)(Math.random())*(Player.pioche.packetComplet.size() - 1));
     }
 
-   
+    
+    /*---------------- Dans la classe Partie ---------------- */
+
+
+    /** Dès qu'un joueur pose un 8, il choisit la couleur du prochain joueur, et ce dernier devra s'y somettre
+     * 
+     */
+    public void choisirCouleur() {}
+
+    /** Dès qu'un joueur pose un Valet, l'ordre des tours est inversé
+     * 
+     */
+    public void changeSens() {}
+
+    /** Dès qu'un joueur pose un 10, il peut rejouer (ou piocher)
+     * 
+     */
+    public void rejouer() {}
+
+    /** Dès qu'un joueur pose un 7, alors on saute le tour du joueur suivant
+     * 
+     */
+    public void sauterTour() {}
+
 }
