@@ -1,6 +1,6 @@
 /* MODÈLE JAVADOC
         /**
-         * Classe CartI implémentant les Worms du jeu.
+         * Classe ... implémentant ...
          * 
          * @author SANE Souleymane
          * 
@@ -25,8 +25,8 @@ public class Carte {
      */
 
     //  ENUMERATION APPARTENANT A LA CLASSE CARTE
-    private static enum Value {AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI};
-    private static enum Color {CARREAU, COEUR, PIQUE, TREFLE};
+    public static enum Value {AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI};
+    public static enum Color {CARREAU, COEUR, PIQUE, TREFLE};
 
 
     //  ATTRIBUTS DE LA CLASSE
@@ -60,7 +60,7 @@ public class Carte {
      * 
      */
     public void descr() {
-        System.out.println(this.value + " de " + this.color + "\n");
+        System.out.println(this.value + " de " + this.color);
     }
 
     /** Nous indique, si la carte d'appel et la carte paramètre ont la même valeur
@@ -89,7 +89,7 @@ public class Carte {
     /** Verifie la conformité de la valeur de la carte, qu'elle soit comprise dans l'enumeration de valeur (value), de type Value
      * 
      * @return
-     */
+     * ///
     public boolean checkValue() {
         for (Value v : Value.values()){
             if (this.value == v) {
@@ -102,7 +102,7 @@ public class Carte {
     /** Vérifie la conformité de la couleur de la carte, qu'elle soit comprise dans l'enumeration de couleur (color) de type Color
      *  Pas très utile dans notre cas, puisque la couleur est incluse dans l'enumération
      * @return
-     */
+     * ///
     public boolean checkColor() {
         for (Color c : Color.values()){
             if (this.color == c) {
@@ -110,6 +110,6 @@ public class Carte {
             }
         }
         return false;
-    }
+    } */
 
 }

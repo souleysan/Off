@@ -1,4 +1,5 @@
 package players; import items.*;
+import java.util.Scanner;
 
 public class Player {
     public static Packet plateau = new Packet();
@@ -59,28 +60,42 @@ public class Player {
         Player.pioche.packetComplet.remove((int)(Math.random())*(Player.pioche.packetComplet.size() - 1));
     }
 
-    
+
     /*---------------- Dans la classe Partie ---------------- */
 
 
-    /** Dès qu'un joueur pose un 8, il choisit la couleur du prochain joueur, et ce dernier devra s'y somettre
-     * 
+    /** Dès qu'un joueur pose un 8, il choisit la couleur du prochain joueur, et ce dernier devra s'y soumettre
+     *
      */
-    public void choisirCouleur() {}
+    public void choisirCouleur() {
+
+        System.out.println("\nQuelle couleur souhaitez-vous imposer ? (Tapez le numéro correspondant)\n\n1 : CARREAU       2 : COEUR     3 : PIQUE     4 : TREFLE ?\n");
+
+        Scanner col = new Scanner(System.in);
+        int couleur = col.nextInt() -1;
+
+        System.out.println("\nVous avez choisi " + Carte.Color.values()[couleur]);
+
+    }
 
     /** Dès qu'un joueur pose un Valet, l'ordre des tours est inversé
-     * 
+     *
      */
     public void changeSens() {}
 
     /** Dès qu'un joueur pose un 10, il peut rejouer (ou piocher)
-     * 
+     *
      */
     public void rejouer() {}
 
     /** Dès qu'un joueur pose un 7, alors on saute le tour du joueur suivant
-     * 
+     *
      */
     public void sauterTour() {}
+
+    /** Methode pour le mode ranked, avec les scores
+     * 
+     */
+    public void initScore() {}
 
 }
