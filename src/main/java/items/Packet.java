@@ -36,9 +36,7 @@ public class Packet {
         this.packetComplet.get(index).descr();
     }
 
-    /** A COMPLETER --> retour "récursif" à la fonciton sur une erreur d'entrée
-     *  
-     * Permet d'initialiser un deck [d'un/plusieurs joueur]
+    /**Permet d'initialiser un deck [d'un/plusieurs joueur]
      * Peut être ajouter un scanner qui lit l'entré de l'utilisateur, pour qu'il uisse choisir le nombre de carte par joueurs
      * 
      * @return
@@ -67,6 +65,27 @@ public class Packet {
                 this.packetComplet.remove(this.packetComplet.get(def)); f++; // On peut avoir 2 cartes identiques dans son deck, ce qui n'est pas souhaitable, donc on remove
             } else {} //    Si la carte n'est pas présente, on ne fait rien = on cherche une nouvele carte à ajouter = on refait les instructions de la condition car le compteur f ne s'incrémentera pas
         } return deck;
+    }
+
+
+
+    public Packet initPlayer(int nbC) {
+
+        int f = 0; Packet deck = new Packet();
+
+        while (true) {
+            if ((nbC <= 9) && (nbC >= 1)) {
+                while (f < nbC) { //  Boucle while pour pouvoir obtenir 8 cartes : Non mbre auto-definissable plus tard ??? Variable f pour la condition    
+                    int index = (int)(Math.random()*(this.packetComplet.size() - 1 - f)); //  La variable définisseur de carte de manière aléatoire. Multiplication par le packetComplet.size()-1-f, car on ne veut pas ajoouter une carte IndexOutOfBounds (pas possible), donc il faut recuperer les cartes en fonction de la taille de packetComplet (qui varie constament). f nous indique en réalité combien de cartes ont été distribuée, donc ici jusqu'à 8 par appel de fonctio
+                    if(this.packetComplet.contains(this.packetComplet.get(index))) { //   Vérification de la présence de la carte dans this.packetComple
+                        deck.packetComplet.add(this.packetComplet.get(index)); // Ajout de la carte au nouveau deck du joueu
+                        this.packetComplet.remove(this.packetComplet.get(index)); f++; // On peut avoir 2 cartes identiques dans son deck, ce qui n'est pas souhaitable, donc on remove
+                    }  //    Si la carte n'est pas présente, on ne fait rien = on cherche une nouvele carte à ajouter = on refait les instructions de la condition car le compteur f ne s'incrémentera pas
+                }
+            } else {System.out.println("Entrez une valeur entre 1 et 9...");} break;
+        }
+
+        return deck;        
     }
     
 }

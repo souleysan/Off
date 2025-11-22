@@ -14,13 +14,13 @@ public class Player {
      * @param n
      * @param packetGeneral
      */
-    public Player(String name, Packet packetGeneral) {this.nom = name; this.deck = packetGeneral.initDeckPlayer();}
+    public Player(String name, Packet packetGeneral, int nbC) {this.nom = name; this.deck = packetGeneral.initPlayer(nbC);}
 
     /** Getter du nom du joueur
      * 
      * @return
      */
-    public String getName() {return this.nom;}
+    public void getName() {System.out.println(this.nom);}
     
     /** Getter du deck du joueur, qui affiche la description de don packet
      * 
