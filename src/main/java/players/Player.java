@@ -1,5 +1,4 @@
-package players; import items.*;
-import java.util.Scanner;
+package players; import items.*; import java.util.Scanner;
 
 public class Player {
     public static Packet plateau = new Packet();
@@ -9,24 +8,28 @@ public class Player {
     private Packet deck = new Packet();
     // int score; //   Pour le mode compétition - règles expliquées prochainement dans le README.md
 
+
     /** Constructeur de joueur, qui possède un nom (bien sûr)et un deck (de type Packet)
      * 
      * @param n
      * @param packetGeneral
      */
-    public Player(String name, Packet packetGeneral, int nbC) {this.nom = name; this.deck = packetGeneral.initPlayer(nbC);}
+    public Player(String name, Packet packetGeneral) {this.nom = name; this.deck = packetGeneral.initDeckPlayer();}
+
 
     /** Getter du nom du joueur
-     * 
+     *
      * @return
      */
     public void getName() {System.out.println(this.nom);}
-    
+
+
     /** Getter du deck du joueur, qui affiche la description de don packet
      * 
      */
     public void getDeck() {this.deck.getPacket();}
-    
+
+
     /** Méthode pour poser une carte (jouer une carte)
      * 
      * @param id
@@ -38,6 +41,7 @@ public class Player {
             this.deck.packetComplet.remove(this.deck.packetComplet.get(index));
         } else {System.out.println("Impossible de poser ce type de carte...\n");}
     }
+
 
     /** Méthode pour initialiser et mettre à jour la pioche durant la partie
      * 
@@ -51,6 +55,7 @@ public class Player {
             Player.plateau.packetComplet.remove(Player.plateau.packetComplet.size() - 2); //    On enleve du plateau les carte ajouté à la pioche
         }   return Player.pioche;
     }
+
 
     /** Methode pour piocher une carte dans la pioche principale
      * 
