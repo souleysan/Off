@@ -1,4 +1,5 @@
 package players;
+import game.Plateau;
 import items.*;
 public class TestPlayer {
     
@@ -6,28 +7,19 @@ public class TestPlayer {
 
         Packet general = new Packet(); general.initPacketEntier();
 
-         Player sousou = new Player("sousou", general,7); sousou.getDeck();
+        Plateau p = new Plateau();
 
-        // Player fatou = new Player("fatou", general); fatou.getDeck();
-        // Player ramou = new Player("ramou", general); ramou.getDeck();
-        // Player atou = new Player("atou", general); atou.getDeck();
+        Player sousou = new Player("2S", general,4);
+        sousou.getName();
+        sousou.getDeck(); sousou.poserCarte(4); Plateau.table.contenu();
+        sousou.poserCarte(3); Plateau.table.contenu();
+        sousou.getDeck(); sousou.poserCarte(2); Plateau.table.contenu();
+        sousou.getDeck(); sousou.poserCarte(4); Plateau.table.contenu();
+
+        Plateau.table.contenu();
         
-        // general.contenu();
-        // sousou.poseCarte(0);  Plateau.table.contenu();
-        // sousou.poseCarte(2); // Player.plateau.contenu();
-        // sousou.poseCarte(2); // Player.plateau.contenu();
-        // sousou.poseCarte(2); // Player.plateau.contenu();
-        // sousou.poseCarte(4); 
-         sousou.getDeck();
-        // Player.plateau.getPacket();
-        // Player.initMAJPioche().getPacket();
-        // sousou.piocher(); sousou.getDeck(); Player.pioche.getPacket();
-        // Player.pioche.packetComplet.clear();
-        // Player.pioche.getPacket();
-        // Player.mix().contenu();
-        // System.out.println(Player.mix().packetComplet.size());
 
-        sousou.choixCouleur();
+
 
     }
 }

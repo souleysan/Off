@@ -8,7 +8,7 @@ public class Packet {
     public Packet() {this.packetComplet = new ArrayList<>();}
 
 
-    public void contenu() {System.out.println("Ce packet est composé de : \n"); for (Carte c : this.packetComplet) {c.descr();}}
+    public void contenu() {System.out.println("Ce packet est composé de : \n"); for (Carte c : this.packetComplet) {c.descr();} System.out.println("\n");}
 
 
     public void contenu(int index) {this.packetComplet.get(index).descr();} // surcharge

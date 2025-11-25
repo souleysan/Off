@@ -15,7 +15,7 @@ public class TestPacket {
         Player k = new Player("name", j, 25);
         // Plateau l = new Plateau();
         k.deck.contenu();
-        k.poseCarte(1);
+        k.poserCarte(1);
         Plateau.table.contenu();
         k.deck.contenu();
 

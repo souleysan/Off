@@ -16,7 +16,16 @@ public class Carte {
     public Color getColor() {return this.color;}
 
 
-    public void descr() {System.out.println(this.value + " de " + this.color);}
+    public void descr() {
+        switch (color) {
+            case CARREAU : System.out.println(this.value + " de ♦️"); break;
+            case COEUR : System.out.println(this.value + " de ♥️"); break;
+            case PIQUE : System.out.println(this.value + " de ♠️"); break;
+            default: System.out.println(this.value + " de ♣️");
+        }
+        
+        // System.out.println(this.value + " de " + this.color);
+    }
 
 
     public boolean sameValue(Carte c) {return this.value == c.value;}

@@ -6,25 +6,30 @@ import java.util.*;
 public class Player {
     private final String nom;
     public Packet deck = new Packet();
-    // int score; //   Pour le mode compétition - règles expliquées prochainement dans le README.md
+    /* int score; Pour le mode compétition - règles expliquées prochainement dans le README.md */
 
 
-    public Player(String name, Packet packetGeneral, int nc) {this.nom = name; this.deck = packetGeneral.deckPlayer(nc);}
+    public Player(String name, Packet packetGeneral, int nombreCarte) {this.nom = name; this.deck = packetGeneral.deckPlayer(nombreCarte);}
 
 
     public void getName() {System.out.println(this.nom);}
 
 
-    public void getDeck() {this.deck.contenu();}
+    public void getDeck() { System.out.print(this.nom + " : "); this.deck.contenu();}
 
 
-    public void poseCarte(int index) {// Condition : index invalide
+    public void poserCarte(int index) {
+        Scanner i = new Scanner(System.in);
 
-        if (index >= 1 && index <= this.deck.packetComplet.size()) {
-            Plateau.table.packetComplet.add(this.deck.packetComplet.get(index - 1));
-            this.deck.packetComplet.remove(this.deck.packetComplet.get(index - 1));
-        } else {
-            System.out.println("Choix impossible, vous ne pouvez pas poser cette carte...\n");}
+        while (true) {
+            if ((index >= 1) && (index <= this.deck.packetComplet.size())) {
+                Plateau.table.packetComplet.add(this.deck.packetComplet.get(index - 1));
+                this.deck.packetComplet.remove(this.deck.packetComplet.get(index - 1)); break;
+            } else {
+                System.out.println("Choix impossible, choisissez une autre carte...\n");
+                index = i.nextInt();
+            }
+        }
     }
 
 
