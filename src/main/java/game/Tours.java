@@ -1,32 +1,28 @@
 package game;
 import java.util.*;
-import players.Player;
-import items.*;
+import players.*;
 
 public class Tours {
+    public static Player [] joueur = {new Player("Rouge", null, 8), new Player("Bleu", null, 0), new Player("Vert", null, 0), new Player("Jaune", null, 0)};
     public static ArrayList <Player> listRotation;
-    Scanner name = new Scanner(System.in);
+    // Scanner name = new Scanner(System.in);
 
 
-    public Tours(int nombreJoueurs, int nombreCarte) {Tours.listRotation = new ArrayList<>();
-        switch (nombreJoueurs) {
-            case 2 :
-                for (int i = 0; i < nombreJoueurs; i++) {
-                    Player jj = new Player(null, null, nombreCarte); Tours.listRotation.add(j);
-                    Player kk = new Player(null, null, nombreCarte); Tours.listRotation.add(k);
-                }
-            case 3 :
-                Player jjj = new Player(null, null, nombreCarte);
-                Player kkk = new Player(null, null, nombreCarte);
-                Player lll = new Player(null, null, nombreCarte);
+    public Tours(int nombreJoueurs, int nombreCarte) {
+        Tours.listRotation = new ArrayList<>();
 
-            case 4 :
-                Player jjjj = new Player(null, null, nombreCarte);
-                Player kkkk = new Player(null, null, nombreCarte);
-                Player llll = new Player(null, null, nombreCarte);
-                Player mmmm = new Player(null, null, nombreCarte);
-
+        for (int i = 1; i < nombreJoueurs; i ++) {
+            Tours.listRotation.add(Tours.joueur[i - 1]);
         }
     }
     
+
+    /** Dès qu'un joueur pose un Valet, l'ordre des tours est inversé */
+    public void changeSens() {}
+
+    /** Dès qu'un joueur pose un 10, il peut rejouer (ou piocher) */
+    public void rejouer() {}
+
+    /** Dès qu'un joueur pose un 7, alors on saute le tour du joueur suivant */
+    public void sauterTour() {}
 }

@@ -4,48 +4,64 @@ import items.*;
 import java.util.*;
 
 public class Player {
-    private final String nom;
+    private String nom;
     public Packet deck = new Packet();
-    /* int score; Pour le mode compétition - règles expliquées prochainement dans le README.md */
+    /* private int score; // Pour le mode compétition - règles expliquées prochainement dans le README.md */
 
 
     public Player(String name, Packet packetGeneral, int nombreCarte) {this.nom = name; this.deck = packetGeneral.deckPlayer(nombreCarte);}
+    public Player() {}
 
 
-    public void getName() {System.out.println(this.nom);}
+    public String getName() {return this.nom;}
 
 
-    public void getDeck() { System.out.print(this.nom + " : "); this.deck.contenu();}
+    public Packet getDeck() {return this.deck;}
 
 
-    public void poserCarte(int index) {
-        Scanner i = new Scanner(System.in);
+    // public int getScore() {return this.score;}
+
+
+    public void setName(String n) {this.nom = n;}
+
+
+    public void setDeck(Packet p, int nc) {this.deck = p.deckPlayer(nc);}
+
+
+    public void descrDeck() {System.out.print("\n" + this.nom + " : "); this.deck.contenu();}
+
+
+    public void poserCarte() {
+        Scanner i = new Scanner(System.in); int index;
 
         while (true) {
+            System.out.println("Quelle carte choisissez-vous, tapez le chiffre, puis 'Entrez'\n");
+            index = i.nextInt(); System.out.println("\n");
             if ((index >= 1) && (index <= this.deck.packetComplet.size())) {
                 Plateau.table.packetComplet.add(this.deck.packetComplet.get(index - 1));
                 this.deck.packetComplet.remove(this.deck.packetComplet.get(index - 1)); break;
             } else {
                 System.out.println("Choix impossible, choisissez une autre carte...\n");
-                index = i.nextInt();
             }
-        }
+        } // Remonter le terminal après que le joueur précédant  ai deposé sa carte
     }
 
 
     public void piocher() {
+        System.out.println("Oh bah... vous souhaitez piocher... Tenez !");
         int def = (int)((Math.random())*(Plateau.pioche.packetComplet.size() - 1));
         this.deck.packetComplet.add(Plateau.pioche.packetComplet.get(def));
         Plateau.pioche.packetComplet.remove(def);
     }
 
 
-    public int choixCouleur() {// Dès qu'un joueur pose un 8, il choisit la couleur du prochain joueur, et ce dernier devra s'y soumettre
+    public int choixCouleur() {
+    // Dès qu'un joueur pose un 8, il choisit la couleur du prochain joueur, et ce dernier devra s'y soumettre
 
         Scanner col = new Scanner(System.in); int couleur;
 
         while (true) {
-        System.out.println("\nQuelle couleur souhaitez-vous imposer ? (Tapez le numéro correspondant)\n\n1 : CARREAU        2 : COEUR       3 : PIQUE       4 : TREFLE ?\n");
+        System.out.println("\nQuelle couleur souhaitez-vous imposer ?\n\n1 : CARREAU        2 : COEUR       3 : PIQUE       4 : TREFLE \n");
             if (col.hasNextInt()) {
                 couleur = col.nextInt() -1;
 
@@ -57,31 +73,13 @@ public class Player {
             }
         }
 
-        System.out.println("\nVous avez choisi " + Carte.Color.values()[couleur]);
+        System.out.println("\nLe joueur précédent vient de vous imposer le " + Carte.Color.values()[couleur] + "\n");
         return couleur;
 
     }
 
-    /*---------------- Dans la classe Partie ---------------- */
 
-    /** Dès qu'un joueur pose un Valet, l'ordre des tours est inversé
-     *
-     */
-    public void changeSens() {}
-
-    /** Dès qu'un joueur pose un 10, il peut rejouer (ou piocher)
-     *
-     */
-    public void rejouer() {}
-
-    /** Dès qu'un joueur pose un 7, alors on saute le tour du joueur suivant
-     *
-     */
-    public void sauterTour() {}
-
-    /** Methode pour le mode ranked, avec les scores
-     * 
-     */
+    /** Methode pour le mode ranked, avec les scores */
     // public void initScore() {}
 
 

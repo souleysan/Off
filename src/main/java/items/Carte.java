@@ -18,13 +18,11 @@ public class Carte {
 
     public void descr() {
         switch (color) {
-            case CARREAU : System.out.println(this.value + " de ♦️"); break;
-            case COEUR : System.out.println(this.value + " de ♥️"); break;
-            case PIQUE : System.out.println(this.value + " de ♠️"); break;
-            default: System.out.println(this.value + " de ♣️");
-        }
-        
-        // System.out.println(this.value + " de " + this.color);
+            case CARREAU : System.out.print(this.value + " de ♦️   |  "); break;
+            case COEUR : System.out.print(this.value + " de ♥️   |  "); break;
+            case PIQUE : System.out.print(this.value + " de ♠️   |  "); break;
+            default: System.out.print(this.value + " de ♣️  |  ");
+        }        
     }
 
 
@@ -34,7 +32,7 @@ public class Carte {
     public boolean sameColor(Carte c) {return this.color == c.color;}
 
 
-    public boolean equals(Carte c) {return this.sameValue(c) && this.sameColor(c);}
+    public boolean equals(Carte c) {return (this.sameValue(c) && this.sameColor(c));}
 
 
 }

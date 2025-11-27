@@ -8,13 +8,20 @@ public class Packet {
     public Packet() {this.packetComplet = new ArrayList<>();}
 
 
-    public void contenu() {System.out.println("Ce packet est composé de : \n"); for (Carte c : this.packetComplet) {c.descr();} System.out.println("\n");}
+    public void contenu() {
+        System.out.print("Voici l'état du packet : \n\n|  "); int f = 1;
+        for (Carte c : this.packetComplet) {
+            System.out.print(f + " : "); c.descr(); f++;
+        } // System.out.println("\n--------------------------------------------------");
+        System.out.println("\n__________________________________________________");
+        System.out.println("\n");
+    }
 
 
     public void contenu(int index) {this.packetComplet.get(index).descr();} // surcharge
 
 
-    public ArrayList<Carte> initPacketEntier() {
+    public ArrayList <Carte> initPacketEntier() {
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 13; i++) {
                 this.packetComplet.add(new Carte(i, j));
@@ -24,7 +31,7 @@ public class Packet {
 
 
     public Packet deckPlayer(int nc) {
-        Packet deck = new Packet(); int f = 0;
+        Packet deck = new Packet();
 
         /*
         while (true) {
@@ -43,6 +50,7 @@ public class Packet {
 
         while (true) {
             if ((nc >= 1) && (nc <= 9)) {
+                int f = 0;
                 while (f < nc) {
                     int def = (int)((Math.random())*(this.packetComplet.size() - 1 - f));
                     if(this.packetComplet.contains(this.packetComplet.get(def))) { f++;

@@ -13,6 +13,16 @@ public class Plateau {
     // public void afficherJoueurs() {for (Player j : Plateau.joueurs) {j.getName();}}
 
 
+    public void contenuTable() {
+        System.out.print("TABLE : "); this.table.contenu();
+    }
+
+
+    public void contenuPioche() {
+        System.out.print("PIOCHE : "); this.pioche.contenu();
+    }
+
+
     public static Packet initMAJPioche() {
         Plateau.pioche.packetComplet.clear();
     
